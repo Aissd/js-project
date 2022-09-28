@@ -11,10 +11,14 @@
 </template>
 
 <script setup>
-  import { ref } from 'vue';
+  import { ref, inject } from 'vue';
   import { onLoad, onShow, onHide } from '@dcloudio/uni-app';
   import { useMainStore } from '@/store/index';
   import { storeToRefs } from 'pinia';
+  import $api from '@/http/api';
+
+  // const $api = inject('$api');
+  // console.log('$api', $api);
   
   const title = ref('');
 
@@ -29,9 +33,28 @@
     main.setState('counter', num);
   }
 
+  function fetchMenu() {
+    const params = {
+      busId: 36,
+      resId: 185,
+      tabId: 2320,
+    };
+    console.log('$api', $api);
+    $api.fastFoodAndCla(params).then(({ code, data, msg }) => {
+      if (code === 0) {
+        console.log(data);
+      } else {
+        console.log(msg);
+      }
+    }).catch(err => {
+        console.log(err);
+    });
+  }
+
   onLoad((options) => {
     console.log('onLoad - options', options);
     main.setToken('1234567890123');
+    fetchMenu();
   });
 
   onShow(() => {
