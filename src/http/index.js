@@ -3,11 +3,11 @@ import config from './config';
 
 // let http = {};
 
-const install = (Vue) => {
+const install = () => {
     // Vue.provide('$api', api);
     // Vue.config.globalProperties.$api= api;
 
-    config.set(Vue);
+    config.set();
     // console.log('Vue.config.globalProperties.$u', Vue.config.globalProperties.$u);
     // const methods = {
     //     get: Vue.config.globalProperties.$u.get,

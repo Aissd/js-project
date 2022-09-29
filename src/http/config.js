@@ -1,14 +1,18 @@
+import { localUrl } from './local-proxy.js';
+console.log('localUrl =================== ', localUrl);
+
 let baseURL = '';
 
 const reqConfig = [];
 
 // #ifdef H5
-baseURL = 'https://food.deeptel.com.cn/admin';
+// baseURL = 'https://food.deeptel.com.cn/admin';
+baseURL = localUrl;
 // #endif
 // #ifdef MP-WEIXIN
 baseURL = 'https://applet-biz-api.deeptel.com.cn/canyin/admin';
 // #endif
-const set = (Vue) => {
+const set = () => {
     // 设置为json，返回后会对数据进行一次JSON.parse()
     const options = {
         baseUrl: baseURL,
