@@ -10,8 +10,13 @@
 // export default { request };
 
 export default {
-    fastFoodAndCla(params) {
-        console.log('uni.$u', uni.$u);
-        return uni.$u.http.get('/admin/fast-arr/v1/foodAndCla/list', params)
-    }
+    wxjssdkInfo(params, header = {}) {
+        return uni.$u.http.get('/fans/general/wxjssdk/info', params, header);
+    },
+    getFoodCategoryList(params, header = {}) {
+        return uni.$u.http.get('/fans/general/food/category/list', params, header);
+    },
+    getFoodList(params, header = {}) {
+        return uni.$u.http.get('/fans/general/food/list', params, header);
+    },
 };

@@ -22,13 +22,17 @@ const set = (Vue) => {
         // 配置请求头信息
     };
     // 默认配置
-    Vue.config.globalProperties.$u.http.setConfig(options);
+    uni.$u.http.setConfig(options);
 	
 	// 请求拦截，配置Token等参数
-	Vue.config.globalProperties.$u.http.interceptor.request = (config) => {
+	uni.$u.http.interceptor.request = (config) => {
 		config.data.busId = 36;
-		config.data.resId = 185;
-		config.data.tabId = 2320;
+		config.data.resId = 85822332682574;
+		config.data.tabId = 85822351556635;
+		config.header.busId = 36;
+		config.header.resId = 85822332682574;
+		config.header.latitude = 23.08464;
+		config.header.longitude = 114.38257;
 		// #ifdef MP-WEIXIN
 		config.header.dataSource = 6;
 		config.data.dataSource = 6;
@@ -42,6 +46,10 @@ const set = (Vue) => {
 		// #ifdef H5
 		config.header.dataSource = 5;
 		config.data.dataSource = 5;
+		if (config.data.dataSource) {
+			config.header.dataSource = config.data.dataSource;
+			config.header['agent-datasource'] = config.data.dataSource;
+		}
 		config.header.requestUrl = window.location.href;
 		config.data.requestUrl = window.location.href;
 		// #endif
@@ -51,10 +59,18 @@ const set = (Vue) => {
 	}
 	
 	// 响应拦截，判断状态码是否通过
-	Vue.config.globalProperties.$u.http.interceptor.response = (res) => {
+	uni.$u.http.interceptor.response = (res) => {
 		const req = reqConfig.shift();
 		console.log(req?.apiUrl, '接口返回的值：', res.data);
 		if(res.statusCode == 200) {
+			const { code, data } = res.data;
+			switch (code) {
+				case 0:
+					break;
+				case 7:
+					window.location.replace(data);
+					break;
+			}
 			return res.data;
 		}
 		return false;

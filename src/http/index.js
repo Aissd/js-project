@@ -1,5 +1,5 @@
 import api from './api';
-// import config from './config';
+import config from './config';
 
 // let http = {};
 
@@ -7,7 +7,7 @@ const install = (Vue) => {
     // Vue.provide('$api', api);
     // Vue.config.globalProperties.$api= api;
 
-    // const baseURL = config.set(Vue);
+    config.set(Vue);
     // console.log('Vue.config.globalProperties.$u', Vue.config.globalProperties.$u);
     // const methods = {
     //     get: Vue.config.globalProperties.$u.get,

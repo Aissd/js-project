@@ -11,14 +11,12 @@
 </template>
 
 <script setup>
-  import { ref, inject } from 'vue';
+  import { ref } from 'vue';
   import { onLoad, onShow, onHide } from '@dcloudio/uni-app';
   import { useMainStore } from '@/store/index';
   import { storeToRefs } from 'pinia';
   import $api from '@/http/api';
-
-  // const $api = inject('$api');
-  // console.log('$api', $api);
+  import { getLocation } from '@/utils/fn';
   
   const title = ref('');
 
@@ -33,14 +31,31 @@
     main.setState('counter', num);
   }
 
+  async function init() {
+    getLocation();
+    await login();
+  }
+
+  function login() {
+    const params = {
+      busId: 36,
+      resId: 85822332682574,
+    };
+    $api.wxjssdkInfo(params).then(({ code, data, msg }) => {
+      if (code === 0) {
+        console.log(data);
+      }
+    });
+  }
+
   function fetchMenu() {
     const params = {
       busId: 36,
-      resId: 185,
-      tabId: 2320,
+      resId: 85822332682574,
+      tableId: 85822351556635,
     };
     console.log('$api', $api);
-    $api.fastFoodAndCla(params).then(({ code, data, msg }) => {
+    $api.getFoodCategoryList(params).then(({ code, data, msg }) => {
       if (code === 0) {
         console.log(data);
       } else {
@@ -54,7 +69,8 @@
   onLoad((options) => {
     console.log('onLoad - options', options);
     main.setToken('1234567890123');
-    fetchMenu();
+    init();
+    // fetchMenu();
   });
 
   onShow(() => {

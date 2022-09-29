@@ -2488,6 +2488,11 @@ vuex@^4.0.2:
   dependencies:
     "@vue/devtools-api" "^6.0.0-beta.11"
 
+weixin-js-sdk@^1.6.0:
+  version "1.6.0"
+  resolved "https://nexus.deeptel.com.cn/nexus/content/groups/gtnpm/weixin-js-sdk/-/weixin-js-sdk-1.6.0.tgz#ff50484d8118ce1208f11248cf4a1c0831577514"
+  integrity sha512-3IYQH7aalJGFJrwdT3epvTdR1MboMiH7vIZ5BRL2eYOJ12BNah7csoMkmSZzkq1+l92sSq29XdTCVjCJoK2sBQ==
+
 which@^2.0.1:
   version "2.0.2"
   resolved "https://nexus.deeptel.com.cn/nexus/content/groups/gtnpm/which/-/which-2.0.2.tgz#7c6a8dd0a636a0327e10b59c9286eee93f3f51b1"

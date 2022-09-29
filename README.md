@@ -27,3 +27,9 @@ https://juejin.cn/post/7101657189428756516
 
 【这个支持小程序和H5，但未尝试】
 https://github.com/dishait/pinia-plugin-unistorage
+
+- wxjsdk
+yarn add weixin-js-sdk
+
+
+http://a.deeptel.com.cn:5000

@@ -20,3 +20,13 @@ export const mobileEncrypt = (val) => {
 	if (!val) return '';
 	return val.replace(/(\d{3})\d*(\d{4})/, '$1****$2');
 };
+
+export const isWxBroswer = () => {
+	let flag = false;
+	// #ifdef H5
+	flag = navigator.userAgent.toLowerCase().match(/MicroMessenger/i) == 'micromessenger';
+	// #endif
+	// #ifdef MP-WEIXIN
+	flag = false;
+	// #endif
+};

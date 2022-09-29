@@ -26,6 +26,7 @@ export const createProxy = () => {
         rewrite: (path) => path.replace(/^(\/api-.*?\/)/, '/'),
     };
   }
+  console.log('result', result);
   return result;
 };
 
